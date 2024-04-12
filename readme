@@ -1,0 +1,25 @@
+### type hints in python
+
+A colon, indicates the start of a type hint for a variable
+~~~
+variable_name: <type> <initialization_value>
+dog: str = "bob"
+numerator: int = 12
+~~~
+
+An arrow indicates the start of a type hint for a function return type
+~~~
+def calculateSum(firstValue: float) -> float
+def calculateDiff(seconds: int) -> int
+def calculateProd(nanoSeconds: int) -> float
+~~~
+
+- they make code more readable and can be simply adjusted
+~~~
+def repeat(item: Any, times: int) -> List[Any]:
+
+def repeat(item: float, times: int) -> List[float]
+~~~
+
+### NOTE:
+    - type hints are simply hints and the program can completely ignore them at runtime.
