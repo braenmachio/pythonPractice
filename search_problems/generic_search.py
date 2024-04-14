@@ -47,14 +47,14 @@ def binary_contains(sequence: Sequence[C], key: C) -> bool:
 class Stack(Generic[T]):
     def __init__(self) -> None:
         self._container: List[T] = []
-        @property
-        def empty(self) -> bool:
-            return not self._container      # executes true for an empty container
-        def push(self, item: T) -> None:
-            self._container.append(item)
-        def pop(self) -> T:
-            return self._container.pop()    # LIFO
-        def __repr__(self) -> str:
+    @property
+    def empty(self) -> bool:
+        return not self._container      # executes true for an empty container
+    def push(self, item: T) -> None:
+        self._container.append(item)
+    def pop(self) -> T:
+        return self._container.pop()    # LIFO
+    def __repr__(self) -> str:
             return repr(self._container)
 # Node keeps track of how we move from one state/place to another as we search
 class Node(Generic[T]): 
@@ -85,8 +85,7 @@ def dfs(initial: T,
         current_state: T = current_node.state
 
         # we are done if we find the goal
-        if goal_test(current_node):
-            return current_node
+        if goal_test(current_node): return current_node
         
         # check if there is a place to go next that we have not explored
         for child in successors(current_state):
