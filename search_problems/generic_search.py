@@ -39,6 +39,5 @@ def binary_contains(sequence: Sequence[C], key: C) -> bool:
     return False
 
 if __name__ == "__main__":
-    # print(linear_contains([1,3,5,6,112,123], 124))
-
+    print(linear_contains([1,3,5,6,112,123], 124))
     print(binary_contains(["a", "b", "c", "d", "e", "f"], "g"))
