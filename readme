@@ -23,3 +23,16 @@ def repeat(item: float, times: int) -> List[float]
 
 ### NOTE:
     - type hints are simply hints and the program can completely ignore them at runtime.
+
+### Special Methods
+`__init__()` - intializes any sort of variable we desire
+
+`_container` : the container can only be accessed in that specific class or function.
+~~~
+A leading underscore is used as a convention to indicate that the implementation of a method/variables should not be relied on by actors outside of the class. (It is subject to change and should be treated as private.)
+~~~
+
+~~~
+We use one _underscore to indicate a private variable/method, but a double __underscore
+really emphasizes that something (method/variable) is indeed private.
+~~~

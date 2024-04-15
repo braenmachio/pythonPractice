@@ -3,7 +3,7 @@ from typing import List, NamedTuple, Callable, Optional
 import random
 from math import sqrt
 # from generic_search import dfs, bfs, node_to_path, astar, Node
-from generic_search import dfs, Node, node_to_path
+from generic_search import dfs, Node, node_to_path, bfs
 
 # constructs of the cell
 class Cell(str, Enum):
@@ -87,7 +87,7 @@ class Maze:
             
 
 if __name__ == "__main__":
-    maze: Maze = Maze()
+    maze: Maze = Maze(sparseness=0.1)
     print(maze)
 
     solution1: Optional[Node[MazeLocation]] = dfs(maze.start, maze.goal_test, maze.successors)
@@ -98,3 +98,13 @@ if __name__ == "__main__":
         maze.mark(path1)
         print(maze)
         maze.clear(path1)
+    
+    # Test BFS
+    solution2: Optional[Node[MazeLocation]] = bfs(maze.start, maze.goal_test, maze.successors)
+    if solution2 is None:
+        print("No solution found using BFS")
+    else:
+        path2: List[MazeLocation] = node_to_path(solution2)
+        maze.mark(path2)
+        print(maze)
+        maze.clear(path2)
