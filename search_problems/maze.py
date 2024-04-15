@@ -13,10 +13,14 @@ class Cell(str, Enum):
     GOAL = "G"
     PATH = "*"
 
-# to refer to indivisual locations in the mze
+# to refer to individual locations in the maze
 class MazeLocation(NamedTuple):
     row: int
     column: int
+    """
+        Named tuple equivalent:
+        MazeLocation = collection.namedtuple('MazeLocation', ['row', 'column'])
+    """
 
 class Maze:
     def __init__(self, rows: int = 10, columns: int = 10, sparseness: float = 0.2,
@@ -59,14 +63,14 @@ class Maze:
     def successors(self, ml: MazeLocation) -> List[MazeLocation]:
         locations: List[MazeLocation] = []
         # row movement: vertical
-        if (ml.row + 1 < self._rows) and (self._grid[ml.row + 1][ml.column] != Cell.BLOCKED):
-            locations.append(MazeLocation(ml.row+1, ml.column))
-        if (ml.row - 1 >= 0) and (self._grid[ml.row - 1][ml.column] != Cell.BLOCKED):
+        if ml.row + 1 < self._rows and self._grid[ml.row + 1][ml.column] != Cell.BLOCKED:
+            locations.append(MazeLocation(ml.row + 1, ml.column))
+        if ml.row - 1 >= 0 and self._grid[ml.row - 1][ml.column] != Cell.BLOCKED:
             locations.append(MazeLocation(ml.row - 1, ml.column))
         #column movement: horizontal
-        if (ml.column + 1 < self._columns) and (self._grid[ml.row][ml.column + 1] != Cell.BLOCKED):
-            locations.append(MazeLocation(ml.row, ml.column+1))
-        if (ml.column - 1 >= 0) and (self._grid[ml.row, ml.column - 1] != Cell.BLOCKED):
+        if ml.column + 1 < self._columns and self._grid[ml.row][ml.column + 1] != Cell.BLOCKED:
+            locations.append(MazeLocation(ml.row, ml.column + 1))
+        if ml.column - 1 >= 0 and self._grid[ml.row][ml.column - 1] != Cell.BLOCKED:
             locations.append(MazeLocation(ml.row, ml.column - 1))
         return locations
 

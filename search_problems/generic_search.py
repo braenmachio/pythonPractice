@@ -56,6 +56,7 @@ class Stack(Generic[T]):
         return self._container.pop()    # LIFO
     def __repr__(self) -> str:
             return repr(self._container)
+    
 # Node keeps track of how we move from one state/place to another as we search
 class Node(Generic[T]): 
     def __init__(self, state: T, parent: Optional[Node], #nself referencing as a result of annotation
@@ -77,7 +78,7 @@ def dfs(initial: T,
     frontier.push(Node(initial, None))
 
     # explored - where we have been
-    explored: Set[T] = (initial)
+    explored: Set[T] = {initial}
 
     # keep going where there is more to explore
     while not frontier.empty:
