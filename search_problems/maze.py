@@ -8,7 +8,7 @@ from generic_search import dfs, Node, node_to_path, bfs
 # constructs of the cell
 class Cell(str, Enum):
     EMPTY = " "
-    BLOCKED = "X"
+    BLOCKED = "B"
     START = "S"
     GOAL = "G"
     PATH = "*"
